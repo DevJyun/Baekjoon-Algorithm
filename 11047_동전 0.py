@@ -1,17 +1,14 @@
-t = int(input())
-seconds = [300, 60, 10]
-answer = [0, 0, 0]
+n, k = map(int, input().split())
+unit = []
+answer = 0
 
-for i in range(len(seconds)):
-  if t >= seconds[i]:
-    answer[i] = t//seconds[i]
-    t %= seconds[i]
+for _ in range(n):
+  unit.append(int(input()))
 
-    if t <= 0:
-      break
+unit.sort(reverse=True)
 
-if t != 0:
-  print('-1')
-else:
-  for i in answer:
-    print(i, end=' ')
+for i in unit:
+  answer += k // i
+  k %= i
+
+print(answer)

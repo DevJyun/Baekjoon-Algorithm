@@ -1,17 +1,12 @@
-t = int(input())
-seconds = [300, 60, 10]
-answer = [0, 0, 0]
+s = int(input())
+sum = 0
 
-for i in range(len(seconds)):
-  if t >= seconds[i]:
-    answer[i] = t//seconds[i]
-    t %= seconds[i]
+for i in range(1, s+1):
+  sum += i
 
-    if t <= 0:
-      break
-
-if t != 0:
-  print('-1')
-else:
-  for i in answer:
-    print(i, end=' ')
+  if sum > s:
+    print(i-1)
+    break
+  elif sum == s:
+    print(i)
+    break

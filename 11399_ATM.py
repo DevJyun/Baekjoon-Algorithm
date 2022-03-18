@@ -1,17 +1,9 @@
-t = int(input())
-seconds = [300, 60, 10]
-answer = [0, 0, 0]
+n = int(input())
+arr = list(map(int, input().split()))
 
-for i in range(len(seconds)):
-  if t >= seconds[i]:
-    answer[i] = t//seconds[i]
-    t %= seconds[i]
+arr.sort()
 
-    if t <= 0:
-      break
+for i in range(1, n):
+  arr[i] += arr[i-1]
 
-if t != 0:
-  print('-1')
-else:
-  for i in answer:
-    print(i, end=' ')
+print(sum(arr))

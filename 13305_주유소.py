@@ -1,17 +1,14 @@
-t = int(input())
-seconds = [300, 60, 10]
-answer = [0, 0, 0]
+n = int(input())
+dist = list(map(int, input().split()))
+cost = list(map(int, input().split()))
 
-for i in range(len(seconds)):
-  if t >= seconds[i]:
-    answer[i] = t//seconds[i]
-    t %= seconds[i]
+answer = cost[0] * dist[0]
+now = cost[0]
 
-    if t <= 0:
-      break
+for i in range(1, n - 1):
+    if now > cost[i]:
+        now = cost[i]
 
-if t != 0:
-  print('-1')
-else:
-  for i in answer:
-    print(i, end=' ')
+    answer += (now * dist[i])
+
+print(answer)

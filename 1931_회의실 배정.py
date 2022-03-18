@@ -1,17 +1,19 @@
-t = int(input())
-seconds = [300, 60, 10]
-answer = [0, 0, 0]
+n = int(input())
+timeArray = []
 
-for i in range(len(seconds)):
-  if t >= seconds[i]:
-    answer[i] = t//seconds[i]
-    t %= seconds[i]
+for _ in range(n):
+    a, b = map(int, input().split())
+    timeArray.append([a, b])
 
-    if t <= 0:
-      break
+timeArray.sort(key=lambda x: x[0])
+timeArray.sort(key=lambda x: x[1])
 
-if t != 0:
-  print('-1')
-else:
-  for i in answer:
-    print(i, end=' ')
+cnt = 1
+end = timeArray[0][1]
+
+for i in range(1, n):
+    if timeArray[i][0] >= end:
+        cnt += 1
+        end = timeArray[i][1]
+
+print(cnt)

@@ -1,17 +1,13 @@
-t = int(input())
-seconds = [300, 60, 10]
-answer = [0, 0, 0]
+n = int(input())
+rope = []
+weight = []
 
-for i in range(len(seconds)):
-  if t >= seconds[i]:
-    answer[i] = t//seconds[i]
-    t %= seconds[i]
+for _ in range(n):
+  rope.append(int(input()))
 
-    if t <= 0:
-      break
+rope.sort()
 
-if t != 0:
-  print('-1')
-else:
-  for i in answer:
-    print(i, end=' ')
+for i in range(n):
+  weight.append(rope[i] * (n-i))
+
+print(max(weight))

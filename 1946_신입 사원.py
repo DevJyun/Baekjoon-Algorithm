@@ -1,17 +1,20 @@
-t = int(input())
-seconds = [300, 60, 10]
-answer = [0, 0, 0]
+import sys
 
-for i in range(len(seconds)):
-  if t >= seconds[i]:
-    answer[i] = t//seconds[i]
-    t %= seconds[i]
+testNum = int(input())
 
-    if t <= 0:
-      break
+for _ in range(testNum):
+    n = int(input())
+    rank = []
 
-if t != 0:
-  print('-1')
-else:
-  for i in answer:
-    print(i, end=' ')
+    for i in range(n):
+        rank.append(list(map(int, sys.stdin.readline().split())))
+
+    rank.sort(key=lambda x: x[0])
+    cnt = 1
+    man = rank[0][1]
+    for i in range(1, n):
+        if rank[i][1] < man:
+            man = rank[i][1]
+            cnt += 1
+
+    print(cnt)

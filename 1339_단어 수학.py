@@ -1,17 +1,25 @@
-t = int(input())
-seconds = [300, 60, 10]
-answer = [0, 0, 0]
+n = int(input())
+words = []
+alpha = [0]*26
+sum = 0
+num = 9
 
-for i in range(len(seconds)):
-  if t >= seconds[i]:
-    answer[i] = t//seconds[i]
-    t %= seconds[i]
+for _ in range(n):
+  words.append(list(input()))
 
-    if t <= 0:
-      break
+for word in words:
+  for i in range(len(word)):
+    index = ord(word[i])-65
+    value = pow(10, len(word)-i-1)
+    alpha[index] += value
 
-if t != 0:
-  print('-1')
-else:
-  for i in answer:
-    print(i, end=' ')
+alpha.sort(reverse=True)
+
+for n in alpha:
+  sum += n * num
+  num -= 1
+
+  if num <= 0:
+    break
+
+print(sum)
